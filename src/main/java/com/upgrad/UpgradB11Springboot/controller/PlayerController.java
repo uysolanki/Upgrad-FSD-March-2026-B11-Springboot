@@ -3,14 +3,20 @@ package com.upgrad.UpgradB11Springboot.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.upgrad.UpgradB11Springboot.entity.Player;
+import com.upgrad.UpgradB11Springboot.service.PlayerService;
 
 @RestController
 @RequestMapping("/player")
 public class PlayerController {
+	
+	@Autowired
+	PlayerService playerService;
+	
 	@RequestMapping("/getPlayer")
 	public Player getPlayer()
 	{
@@ -33,5 +39,13 @@ public class PlayerController {
 		players.add(p4);
 		
 		return players;
+	}
+	
+	@RequestMapping("/savePlayer")
+	public String savePlayer()
+	{
+		Player p1=new Player(18,"Virat",100,5000);
+		playerService.savePlayer(p1);
+		return "Player record addedd successfully";
 	}
 }

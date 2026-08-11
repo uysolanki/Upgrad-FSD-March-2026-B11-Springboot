@@ -1,7 +1,12 @@
 package com.upgrad.UpgradB11Springboot.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Player {
 
+	@Id
 	private int pno;
 	private String pname;
 	private int mp,rs;
