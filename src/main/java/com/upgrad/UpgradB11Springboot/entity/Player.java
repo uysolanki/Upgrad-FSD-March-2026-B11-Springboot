@@ -11,15 +11,17 @@ public class Player {
 	private String pname;
 	private int mp,rs;
 	
-	public Player() {}
-	public Player(int pno, String pname, int mp, int rs) {
+	public Player() {}   //NoArgsConstructor
+	public Player(int pno, String pname, int mp, int rs)  //AllArgsConstructor
+	{
 		super();
 		this.pno = pno;
 		this.pname = pname;
 		this.mp = mp;
 		this.rs = rs;
 	}
-	public int getPno() {
+	public int getPno()   //Setter Getter
+	{
 		return pno;
 	}
 	public void setPno(int pno) {
@@ -44,7 +46,8 @@ public class Player {
 		this.rs = rs;
 	}
 	@Override
-	public String toString() {
+	public String toString()		//ToString
+	{
 		return "Player [pno=" + pno + ", pname=" + pname + ", mp=" + mp + ", rs=" + rs + "]";
 	}
 	
