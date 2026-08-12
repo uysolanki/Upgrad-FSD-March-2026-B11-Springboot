@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,7 +60,7 @@ public class PlayerController {
 		return playerService.savePlayer(p1);
 	}
 	
-	@RequestMapping("/savePlayerByRequestParam")
+	@PostMapping("/savePlayerByRequestParam")   //Insert Data
 	public Player savePlayerByRequestParam(@RequestParam("a") int playerJno, 
 			@RequestParam("b")String playerName,
 			@RequestParam("c")int matchesPlayed,
@@ -67,4 +70,54 @@ public class PlayerController {
 		Player p1=new Player(playerJno,playerName,matchesPlayed,runsScored);
 		return playerService.savePlayer(p1);
 	}
+	
+	@PostMapping("/savePlayerByRequestParam1")   //Insert Data
+	public Player savePlayerByRequestParam1(@RequestParam int playerJno, 
+			@RequestParam String playerName,
+			@RequestParam int matchesPlayed,
+			@RequestParam int runsScored
+			)
+	{
+		Player p1=new Player(playerJno,playerName,matchesPlayed,runsScored);
+		return playerService.savePlayer(p1);
+	}
+	
+	
+	@PostMapping("/savePlayerByPathVariable/{a}/{b}/{c}/{d}")   //Insert Data
+	public Player savePlayerByPathVariable(@PathVariable("a") int playerJno, 
+			@PathVariable("b")String playerName,
+			@PathVariable("c")int matchesPlayed,
+			@PathVariable("d")int runsScored
+			)
+	{
+		Player p1=new Player(playerJno,playerName,matchesPlayed,runsScored);
+		return playerService.savePlayer(p1);
+	}
+	
+	
+	@PostMapping("/savePlayerByPathVariable1/{playerJno}/{playerName}/{matchesPlayed}/{runsScored}")   //Insert Data
+	public Player savePlayerByPathVariable1(@PathVariable int playerJno, 
+			@PathVariable String playerName,
+			@PathVariable int matchesPlayed,
+			@PathVariable int runsScored
+			)
+	{
+		Player p1=new Player(playerJno,playerName,matchesPlayed,runsScored);
+		return playerService.savePlayer(p1);
+	}
+	
+	@PostMapping("/savePlayerByRequestBody")   //Insert Data
+	public Player savePlayerByRequestBody(@RequestBody Player p1){
+		return playerService.savePlayer(p1);
+	}
 }
+
+
+/*
+{
+    "pno": 56,
+    "pname": "Siraj",
+    "mp": 5,
+    "rs": 500
+}
+*/
