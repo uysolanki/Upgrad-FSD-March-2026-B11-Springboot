@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.upgrad.UpgradB11Springboot.entity.Player;
@@ -44,8 +45,26 @@ public class PlayerController {
 	@RequestMapping("/savePlayer")
 	public String savePlayer()
 	{
-		Player p1=new Player(18,"Virat",100,5000);
+		Player p1=new Player(7,"Dhoni",300,15000);
 		playerService.savePlayer(p1);
 		return "Player record addedd successfully";
+	}
+	
+	@RequestMapping("/savePlayer1")
+	public Player savePlayer1()
+	{
+		Player p1=new Player(93,"Bumrah",30,150);
+		return playerService.savePlayer(p1);
+	}
+	
+	@RequestMapping("/savePlayerByRequestParam")
+	public Player savePlayerByRequestParam(@RequestParam("a") int playerJno, 
+			@RequestParam("b")String playerName,
+			@RequestParam("c")int matchesPlayed,
+			@RequestParam("d")int runsScored
+			)
+	{
+		Player p1=new Player(playerJno,playerName,matchesPlayed,runsScored);
+		return playerService.savePlayer(p1);
 	}
 }
