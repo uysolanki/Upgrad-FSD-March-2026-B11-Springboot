@@ -41,6 +41,12 @@ public class SupplierController
 		Supplier supplier= supplierService.getSingleSupplier(suppId);
 		return supplier;
 	}
+	
+	@GetMapping("/getSupplierByCity/{suppCity}")   //Insert Data
+	public List<Supplier> getSupplierByCity(@PathVariable String suppCity){
+		List<Supplier> suppliers= supplierService.getSupplierByCity(suppCity);
+		return suppliers;
+	}
 }
 
 //Post - 	Insert

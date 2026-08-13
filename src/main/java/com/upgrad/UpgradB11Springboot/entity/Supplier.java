@@ -29,4 +29,5 @@ public class Supplier {
 	private long supplierContactNumber;
 	private boolean isCODAvailable;
 	private LocalDate dateOfEstablisment;
+	private String supplierCity;
 }

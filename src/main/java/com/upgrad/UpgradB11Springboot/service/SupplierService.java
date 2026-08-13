@@ -29,4 +29,10 @@ public class SupplierService {
 	public Supplier getSingleSupplier(int suppId) {
 		return supplierRepository.findById(suppId).get();
 	}
+
+	
+
+	public List<Supplier> getSupplierByCity(String suppCity) {
+		return supplierRepository.findBySupplierCity(suppCity);
+	}
 }

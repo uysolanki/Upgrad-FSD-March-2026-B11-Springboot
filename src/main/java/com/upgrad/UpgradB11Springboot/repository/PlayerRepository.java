@@ -8,4 +8,5 @@ import com.upgrad.UpgradB11Springboot.entity.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
+	
 }
