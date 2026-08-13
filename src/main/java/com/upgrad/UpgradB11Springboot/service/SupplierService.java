@@ -1,5 +1,7 @@
 package com.upgrad.UpgradB11Springboot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class SupplierService {
 
 	public Supplier saveSupplier(Supplier s1) {
 		return supplierRepository.save(s1);
+	}
+
+	public List<Supplier> saveSuppliers(List<Supplier> suppliers) {
+		return supplierRepository.saveAll(suppliers);
 	}
 }

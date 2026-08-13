@@ -110,6 +110,8 @@ public class PlayerController {
 	public Player savePlayerByRequestBody(@RequestBody Player p1){
 		return playerService.savePlayer(p1);
 	}
+	
+	
 }
 
 
