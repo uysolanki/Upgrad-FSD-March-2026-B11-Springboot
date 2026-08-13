@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 	
-	@RequestMapping("/fsd")
+	@RequestMapping("/fsd")   // provides the url localhost:8091/fsd all operationsCRUD
 	public String test()
 	{
 		return "Welcome to springboot";

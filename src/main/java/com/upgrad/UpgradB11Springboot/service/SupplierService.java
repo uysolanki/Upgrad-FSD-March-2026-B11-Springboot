@@ -21,4 +21,12 @@ public class SupplierService {
 	public List<Supplier> saveSuppliers(List<Supplier> suppliers) {
 		return supplierRepository.saveAll(suppliers);
 	}
+
+	public List<Supplier> getAllSuppliers() {
+		return supplierRepository.findAll();
+	}
+
+	public Supplier getSingleSupplier(int suppId) {
+		return supplierRepository.findById(suppId).get();
+	}
 }

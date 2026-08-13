@@ -3,6 +3,8 @@ package com.upgrad.UpgradB11Springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,4 +30,22 @@ public class SupplierController
 		return supplierService.saveSuppliers(suppliers);
 	}
 	
+	@GetMapping("/getAllSuppliers")   //Insert Data
+	public List<Supplier> getAllSuppliers(){
+		List<Supplier> suppliers= supplierService.getAllSuppliers();
+		return suppliers;
+	}
+	
+	@GetMapping("/getSingleSuppliers/{suppId}")   //Insert Data
+	public Supplier getSingleSupplier(@PathVariable int suppId){
+		Supplier supplier= supplierService.getSingleSupplier(suppId);
+		return supplier;
+	}
 }
+
+//Post - 	Insert
+//Put - 	Update
+//Delete -	Delete
+//Get   - 	Select/Read
+
+//RequestMapping - support all(Insert,Update,Delete,Select)

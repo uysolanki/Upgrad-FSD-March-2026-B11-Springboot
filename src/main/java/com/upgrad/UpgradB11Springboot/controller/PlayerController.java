@@ -60,7 +60,7 @@ public class PlayerController {
 		return playerService.savePlayer(p1);
 	}
 	
-	@PostMapping("/savePlayerByRequestParam")   //Insert Data
+	@PostMapping("/savePlayerByRequestParam")   //Insert Data using named variables
 	public Player savePlayerByRequestParam(@RequestParam("a") int playerJno, 
 			@RequestParam("b")String playerName,
 			@RequestParam("c")int matchesPlayed,
