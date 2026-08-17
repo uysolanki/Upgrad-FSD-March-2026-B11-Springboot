@@ -3,6 +3,8 @@ package com.upgrad.UpgradB11Springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.upgrad.UpgradB11Springboot.entity.Supplier;
+import com.upgrad.UpgradB11Springboot.exception.SupplierNotFoundException;
 import com.upgrad.UpgradB11Springboot.service.SupplierService;
 
 @RestController
@@ -46,6 +49,27 @@ public class SupplierController
 	public List<Supplier> getSupplierByCity(@PathVariable String suppCity){
 		List<Supplier> suppliers= supplierService.getSupplierByCity(suppCity);
 		return suppliers;
+	}
+	
+	
+	@GetMapping("/getAllSuppliersUsingPagination/{pageNumber}/{pageSize}")   //Insert Data
+	public Page<Supplier> getAllSuppliersUsingPagination(@PathVariable int pageNumber,@PathVariable int pageSize){
+		Page<Supplier> suppliers= supplierService.getAllSuppliersUsingPagination(pageNumber,pageSize);
+		return suppliers;
+	}
+	
+	@DeleteMapping("/deleteSupplierById/{suppId}")
+	public String deleteSupplierById(@PathVariable int suppId)
+	{
+		try
+		{
+		supplierService.deleteSupplierById(suppId);
+		return "Supplier Deleted with ID "+suppId;
+		}
+		catch(SupplierNotFoundException ex)
+		{
+			return ex.getMessage();
+		}
 	}
 }
 
