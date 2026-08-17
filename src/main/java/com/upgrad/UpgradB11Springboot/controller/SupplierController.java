@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class SupplierController
 	@Autowired
 	SupplierService supplierService;
 	
-	@PostMapping("/saveSupplier")   //Insert Data
+	@PostMapping("/saveSupplier")   //Insert Data							//C
 	public Supplier saveSupplier(@RequestBody Supplier s1){
 		return supplierService.saveSupplier(s1);
 	}
@@ -39,7 +40,7 @@ public class SupplierController
 		return suppliers;
 	}
 	
-	@GetMapping("/getSingleSuppliers/{suppId}")   //Insert Data
+	@GetMapping("/getSingleSuppliers/{suppId}")   //Insert Data				//R
 	public Supplier getSingleSupplier(@PathVariable int suppId){
 		Supplier supplier= supplierService.getSingleSupplier(suppId);
 		return supplier;
@@ -58,13 +59,28 @@ public class SupplierController
 		return suppliers;
 	}
 	
-	@DeleteMapping("/deleteSupplierById/{suppId}")
+	@DeleteMapping("/deleteSupplierById/{suppId}")							//D
 	public String deleteSupplierById(@PathVariable int suppId)
 	{
 		try
 		{
 		supplierService.deleteSupplierById(suppId);
 		return "Supplier Deleted with ID "+suppId;
+		}
+		catch(SupplierNotFoundException ex)
+		{
+			return ex.getMessage();
+		}
+	}
+	
+	
+	@PutMapping("/updateSupplier/{suppId}")										//U
+	public String updateSupplier(@PathVariable int suppId, @RequestBody Supplier newValues)
+	{
+		try
+		{
+		supplierService.updateSupplier(suppId,newValues);
+		return "Supplier Updated with ID "+suppId;
 		}
 		catch(SupplierNotFoundException ex)
 		{
