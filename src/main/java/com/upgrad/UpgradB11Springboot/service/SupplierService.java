@@ -2,12 +2,14 @@ package com.upgrad.UpgradB11Springboot.service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.upgrad.UpgradB11Springboot.dto.SupplierDTO;
 import com.upgrad.UpgradB11Springboot.entity.Supplier;
 import com.upgrad.UpgradB11Springboot.exception.SupplierNotFoundException;
 import com.upgrad.UpgradB11Springboot.repository.SupplierRepository;
@@ -18,6 +20,8 @@ public class SupplierService {
 	@Autowired
 	SupplierRepository supplierRepository;
 
+	@Autowired
+	ModelMapper mapper;
 	public Supplier saveSupplier(Supplier s1) {
 		return supplierRepository.save(s1);
 	}
@@ -75,5 +79,11 @@ public class SupplierService {
 			throw new SupplierNotFoundException("Supplier with ID "+suppId +" does not exist");
 		}
 		
+	}
+
+	public SupplierDTO saveSupplierUsingDTO(SupplierDTO supplierDTO) {
+		Supplier supplier=mapper.map(supplierDTO, Supplier.class);
+		Supplier supplierSavedInDB=supplierRepository.save(supplier);
+		return mapper.map(supplierSavedInDB, SupplierDTO.class);
 	}
 }

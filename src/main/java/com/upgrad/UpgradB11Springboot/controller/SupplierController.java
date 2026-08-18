@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.upgrad.UpgradB11Springboot.dto.SupplierDTO;
 import com.upgrad.UpgradB11Springboot.entity.Supplier;
 import com.upgrad.UpgradB11Springboot.exception.SupplierNotFoundException;
 import com.upgrad.UpgradB11Springboot.service.SupplierService;
@@ -27,6 +28,11 @@ public class SupplierController
 	@PostMapping("/saveSupplier")   //Insert Data							//C
 	public Supplier saveSupplier(@RequestBody Supplier s1){
 		return supplierService.saveSupplier(s1);
+	}
+	
+	@PostMapping("/saveSupplierUsingDTO")   //Insert Data							//C
+	public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO){
+		return supplierService.saveSupplierUsingDTO(supplierDTO);
 	}
 	
 	@PostMapping("/saveSuppliers")   //Insert Data
