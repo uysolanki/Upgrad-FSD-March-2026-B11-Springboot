@@ -62,7 +62,7 @@ public class SupplierService {
 		
 	}
 
-	public void updateSupplier(int suppId, Supplier newValues) {
+	public void updateSupplier(int suppId, Supplier newValues) throws  SupplierNotFoundException {
 		if(supplierRepository.existsById(suppId))
 		{
 		Supplier supplierFromDB=getSingleSupplier(suppId);

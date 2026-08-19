@@ -18,6 +18,8 @@ import com.upgrad.UpgradB11Springboot.entity.Supplier;
 import com.upgrad.UpgradB11Springboot.exception.SupplierNotFoundException;
 import com.upgrad.UpgradB11Springboot.service.SupplierService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController 
@@ -31,7 +33,7 @@ public class SupplierController
 	}
 	
 	@PostMapping("/saveSupplierUsingDTO")   //Insert Data							//C
-	public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO){
+	public SupplierDTO saveSupplier(@Valid @RequestBody SupplierDTO supplierDTO){
 		return supplierService.saveSupplierUsingDTO(supplierDTO);
 	}
 	
@@ -92,6 +94,13 @@ public class SupplierController
 		{
 			return ex.getMessage();
 		}
+	}
+	
+	@PutMapping("/updateSupplierusingGEH/{suppId}")										//U
+	public String updateSupplierusingGEH(@PathVariable int suppId, @RequestBody Supplier newValues)
+	{
+		supplierService.updateSupplier(suppId,newValues);
+		return "Supplier Updated with ID "+suppId;
 	}
 }
 
