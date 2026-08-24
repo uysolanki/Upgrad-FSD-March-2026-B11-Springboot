@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -52,6 +53,13 @@ public class SupplierControllerUI
 	public String saveSupplier(@ModelAttribute Supplier supplier)
 	{
 		supplierService.saveSupplier(supplier);
+		return "redirect:/supplier/showAllSuppliers";
+	}
+	
+	@RequestMapping("/deletSupplier/{suppId}")							//D
+	public String deleteSupplierById(@PathVariable int suppId)
+	{	
+		supplierService.deleteSupplierById(suppId);
 		return "redirect:/supplier/showAllSuppliers";
 	}
 }

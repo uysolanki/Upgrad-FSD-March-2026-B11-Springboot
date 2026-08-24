@@ -15,10 +15,11 @@
         <thead class="table-dark">
         <tr>
             <th>Supplier Name</th>
-           <th>Supplier Email</th>
+            <th>Supplier Email</th>
             <th>Contact Number</th>
             <th>Date Of Establishment</th>
             <th>Supplier City</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,8 @@
             <td th:text="${supplier.supplierContactNumber}"></td>
             <td th:text="${supplier.dateOfEstablisment}"></td>
             <td th:text="${supplier.supplierCity}"></td>
+           <td><a th:href="@{'/supplier/deletSupplier/' + ${supplier.supplierId}}" class="btn btn-danger btn-sm" 
+               onclick="return confirm('Are you sure you want to delete this product?');">Delete</a> </td>
            
             
         </tr>
