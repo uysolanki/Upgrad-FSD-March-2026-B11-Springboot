@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.upgrad.UpgradB11Springboot.entity.Supplier;
@@ -29,12 +31,28 @@ public class SupplierControllerUI
 		return "show-suppliers";
 	}
 	
+	@RequestMapping("/addSupplierForm")
+	public String addSupplierForm(Model model)
+	{
+	Supplier supplier=new Supplier();
+	model.addAttribute("supplier",supplier);
+	return "add-supplier-form";
+	}
+
+	
 	@RequestMapping("/showAllSuppliers")
 	public String showAllSuppliers(Model model)
 	{
 		List<Supplier> suppliers= supplierService.getAllSuppliers();
 		model.addAttribute("suppliers",suppliers);
 		return "show-all-suppliers";
+	}
+	
+	@PostMapping("/saveSupplier")
+	public String saveSupplier(@ModelAttribute Supplier supplier)
+	{
+		supplierService.saveSupplier(supplier);
+		return "redirect:/supplier/showAllSuppliers";
 	}
 }
 

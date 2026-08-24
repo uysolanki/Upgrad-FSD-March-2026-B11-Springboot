@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Supplier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Add New Supplier</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/supplier/saveSupplier}" th:object="${supplier}" method="post">
+                <div class="mb-3">
+                    <label for="SupplierName" class="form-label">Supplier Name</label>
+                    <input type="text" th:field="*{supplierName}" id="SupplierName" class="form-control" placeholder="Enter Supplier Name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="SupplierEmail" class="form-label">Supplier Email</label>
+                    <input type="text" th:field="*{supplierEmail}" id="SupplierEmail" class="form-control" placeholder="Enter Supplier Email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number</label>
+                    <input type="text" th:field="*{supplierContactNumber}" id="contactNumber" class="form-control" placeholder="Contact Number">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="doe" class="form-label">Date Of Establisment</label>
+                    <input type="text" th:field="*{dateOfEstablisment}" id="doe" class="form-control" placeholder="Date Of Establisment [yyyy-mm-dd]">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="supplierCity" class="form-label">Supplier City</label>
+                    <input type="text" th:field="*{supplierCity}" id="supplierCity" class="form-control" placeholder="Enter Supplier City">
+                </div>
+
+                <button type="submit" class="btn btn-success">Add Supplier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
