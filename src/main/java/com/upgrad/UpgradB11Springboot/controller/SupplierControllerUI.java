@@ -62,6 +62,22 @@ public class SupplierControllerUI
 		supplierService.deleteSupplierById(suppId);
 		return "redirect:/supplier/showAllSuppliers";
 	}
+	
+	@RequestMapping("/updateSupplierForm/{suppId}")							//D
+	public String updateSupplierForm(@PathVariable int suppId,Model model)
+	{	
+		Supplier supplier=supplierService.getSingleSupplier(suppId);
+		model.addAttribute("supplier", supplier);
+		return "update-supplier-form";
+	}
+	
+	@PostMapping("updateSupplier/{suppId}")										//U
+	public String updateSupplier(@PathVariable int suppId, @ModelAttribute Supplier newValues)
+	{
+		
+		supplierService.updateSupplier(suppId,newValues);
+		return "redirect:/supplier/showAllSuppliers";
+	}
 }
 
 //Post - 	Insert
