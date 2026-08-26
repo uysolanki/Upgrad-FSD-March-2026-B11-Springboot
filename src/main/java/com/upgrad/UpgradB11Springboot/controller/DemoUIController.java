@@ -13,13 +13,13 @@ public class DemoUIController {
 		return "home";   //name of the (.html) webpage
 	}
 	
-	@RequestMapping("/supplier")
-	public String showSupplier(Model model)
-	{
-		String player="Rohit";
-		model.addAttribute("player",player);
-		return "show-suppliers";   //name of the (.html) webpage
-	}
+//	@RequestMapping("/supplier")
+//	public String showSupplier(Model model)
+//	{
+//		String player="Rohit";
+//		model.addAttribute("player",player);
+//		return "show-suppliers";   //name of the (.html) webpage
+//	}
 //	
 //	@RequestMapping("/welcomeSupplier")
 //	public String showSupplier()
