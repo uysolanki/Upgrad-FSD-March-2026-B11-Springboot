@@ -1,5 +1,6 @@
 package com.upgrad.UpgradB11Springboot.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,20 +27,24 @@ import lombok.ToString;
 @ToString
 public class DBUser {
 
-	   @Id
-	   @GeneratedValue(strategy = GenerationType.IDENTITY)
-	   private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	   private String username;
+	private String username;
 
-	   private String password;
-	    
-	   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	   @JoinTable(
-	           name = "users_roles",
-	           joinColumns = @JoinColumn(name = "fkuserid"),
-	           inverseJoinColumns = @JoinColumn(name = "fkroleid")
-	           )
-	   private List<DBRole> roles = new ArrayList<>();
+	private String password;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "fkuserid"), inverseJoinColumns = @JoinColumn(name = "fkroleid"))
+	private List<DBRole> roles = new ArrayList<>();
+
+	LocalDate accountExpiryDate;
+
+	int accountLockedStatus; // 1-Unlocked 0-locked
+
+	LocalDate credExpiryDate;
+
+	int accountEnabledStatus;  //1-Enabled 0-Disbled
 
 }

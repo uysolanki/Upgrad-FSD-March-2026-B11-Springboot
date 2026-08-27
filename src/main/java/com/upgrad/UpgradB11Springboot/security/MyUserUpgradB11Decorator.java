@@ -1,5 +1,6 @@
 package com.upgrad.UpgradB11Springboot.security;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -40,6 +41,46 @@ public class MyUserUpgradB11Decorator implements UserDetails {
 	@Override
 	public String getUsername() {
 		return user.getUsername();
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		LocalDate accountExpiryDate= user.getAccountExpiryDate();
+		LocalDate todaysDate=LocalDate.now();
+		if(todaysDate.isAfter(accountExpiryDate))
+			return false;
+		else
+			return true;
+	}
+	
+	@Override
+	public boolean isAccountNonLocked() {
+		int lockedStatus= user.getAccountLockedStatus();
+		
+		if(lockedStatus==0)
+			return false;
+		else
+			return true;
+	}
+	
+	@Override
+	public boolean isCredentialsNonExpired() {
+		LocalDate credentialExpiryDate= user.getCredExpiryDate();
+		LocalDate todaysDate=LocalDate.now();
+		if(todaysDate.isAfter(credentialExpiryDate))
+			return false;
+		else
+			return true;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		int enabledStatus= user.getAccountEnabledStatus();
+				
+				if(enabledStatus==0)
+					return false;
+				else
+					return true;
 	}
 
 }
