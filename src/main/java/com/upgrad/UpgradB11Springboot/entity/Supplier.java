@@ -30,7 +30,7 @@ public class Supplier {
 	private String supplierEmail;
 	private long supplierContactNumber;
 	private boolean isCODAvailable;
-	private LocalDate dateOfEstablisment;
+	private String supplierImage;
 	private String supplierCity;
 	
 	private LocalDateTime createdAt;
