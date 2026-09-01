@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -109,6 +110,16 @@ public class PlayerController {
 	@PostMapping("/savePlayerByRequestBody")   //Insert Data
 	public Player savePlayerByRequestBody(@RequestBody Player p1){
 		return playerService.savePlayer(p1);
+	}
+	
+	@PostMapping("/savePlayers")   //Insert Data
+	public List<Player> savePlayerByRequestBody(@RequestBody List<Player> players){
+		return playerService.savePlayers(players);
+	}
+	
+	@GetMapping("/getPlayerByPlayerId/{playerId}")   //Insert Data
+	public Player getPlayerByPlayerId(@PathVariable int playerId){
+		return playerService.getPlayerByPlayerId(playerId);
 	}
 	
 	

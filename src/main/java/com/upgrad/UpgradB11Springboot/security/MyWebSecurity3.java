@@ -49,10 +49,11 @@ public class MyWebSecurity3 {
                     "/supplier/login",
                     "/supplier/403",
                     "/supplier/getAllSuppliers",
-                    "/supplier/saveSuppliers"
+                    "/supplier/saveSuppliers",
+                    "/player/**"
                 ).permitAll()
                 
-				.requestMatchers("/supplier/showAllSuppliers", "/supplier/addSupplierForm", "/supplier/getAllSuppliers")
+				.requestMatchers("/supplier/showAllSuppliers", "/supplier/addSupplierForm", "/supplier/getAllSuppliers", "/player/**")
 				.hasAnyAuthority("USER", "ADMIN")
 
 				.requestMatchers("/supplier/deletSupplier/**", "/supplier/updateSupplierForm/**").hasAuthority("ADMIN")

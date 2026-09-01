@@ -2,55 +2,23 @@ package com.upgrad.UpgradB11Springboot.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Player {
 
 	@Id
-	private int pno;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer pno;
 	private String pname;
-	private int mp,rs;
-	
-	public Player() {}   //NoArgsConstructor
-	public Player(int pno, String pname, int mp, int rs)  //AllArgsConstructor
-	{
-		super();
-		this.pno = pno;
-		this.pname = pname;
-		this.mp = mp;
-		this.rs = rs;
-	}
-	public int getPno()   //Setter Getter
-	{
-		return pno;
-	}
-	public void setPno(int pno) {
-		this.pno = pno;
-	}
-	public String getPname() {
-		return pname;
-	}
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
-	public int getMp() {
-		return mp;
-	}
-	public void setMp(int mp) {
-		this.mp = mp;
-	}
-	public int getRs() {
-		return rs;
-	}
-	public void setRs(int rs) {
-		this.rs = rs;
-	}
-	@Override
-	public String toString()		//ToString
-	{
-		return "Player [pno=" + pno + ", pname=" + pname + ", mp=" + mp + ", rs=" + rs + "]";
-	}
-	
-	
-	
+	private int mp,rs;	
 }
