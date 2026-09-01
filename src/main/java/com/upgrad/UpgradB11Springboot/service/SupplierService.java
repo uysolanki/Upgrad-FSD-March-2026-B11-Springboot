@@ -67,7 +67,6 @@ public class SupplierService {
 		{
 		Supplier supplierFromDB=getSingleSupplier(suppId);
 		supplierFromDB.setCODAvailable(true);
-		supplierFromDB.setDateOfEstablisment(newValues.getDateOfEstablisment());
 		supplierFromDB.setSupplierCity(newValues.getSupplierCity());
 		supplierFromDB.setSupplierContactNumber(newValues.getSupplierContactNumber());
 		supplierFromDB.setSupplierEmail(newValues.getSupplierEmail());
