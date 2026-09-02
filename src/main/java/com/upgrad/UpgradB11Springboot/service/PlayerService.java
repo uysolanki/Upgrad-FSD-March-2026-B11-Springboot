@@ -31,4 +31,18 @@ public class PlayerService {
 	public List<Player> savePlayers(List<Player> players) {
 		return playerRepository.saveAll(players);
 	}
+
+	public List<Player> getAllPlayers() {
+		return playerRepository.findAll();
+	}
+
+	public void deletePlayerByPlayerId(int playerId) {
+		
+		if(playerRepository.existsById(playerId))
+		{
+			playerRepository.deleteById(playerId);
+		}
+		throw new RuntimeException("Record not found");
+		
+	}
 }
