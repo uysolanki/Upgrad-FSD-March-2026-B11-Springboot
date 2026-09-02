@@ -129,6 +129,12 @@ public class PlayerController {
 		return playerService.getAllPlayers();
 	}
 	
+	
+	@DeleteMapping("/deletePlayerByPlayerId/{playerId}")   //Insert Data
+	public String deletePlayerByPlayerId(@PathVariable int playerId){
+		playerService.deletePlayerByPlayerId(playerId);
+		return "Player Deleted";
+	}
 
 	
 }

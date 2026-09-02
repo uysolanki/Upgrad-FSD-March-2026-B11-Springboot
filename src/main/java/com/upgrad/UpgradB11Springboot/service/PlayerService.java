@@ -37,12 +37,13 @@ public class PlayerService {
 	}
 
 	public void deletePlayerByPlayerId(int playerId) {
-		
 		if(playerRepository.existsById(playerId))
 		{
 			playerRepository.deleteById(playerId);
 		}
-		throw new RuntimeException("Record not found");
+		else
+			throw new RuntimeException("Player not found");
 		
 	}
+
 }

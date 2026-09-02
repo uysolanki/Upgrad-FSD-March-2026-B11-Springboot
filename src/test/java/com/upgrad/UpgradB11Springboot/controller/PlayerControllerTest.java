@@ -19,6 +19,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+
 import com.upgrad.UpgradB11Springboot.entity.Player;
 import com.upgrad.UpgradB11Springboot.service.PlayerService;
 
@@ -108,6 +114,20 @@ class PlayerControllerTest {
 		.andExpect(jsonPath("$.mp").value(120)).andExpect(jsonPath("$.pname").value("Abd"));
 		
 	}	
-
+	
+	@Test
+	void deletePlayerByPlayer_endpointShouldReturnStringMessage() throws Exception {
+		
+		int playerId=333;
+		
+		doNothing().when(playerService).deletePlayerByPlayerId(playerId);
+		
+		mockMvc.perform(delete("/player/deletePlayerByPlayerId/"+playerId)
+				).andExpect(status().isOk())
+		.andExpect(content().string("Player Deleted"));
+		
+		verify(playerService).deletePlayerByPlayerId(playerId);
+		
+	}
 
 }
