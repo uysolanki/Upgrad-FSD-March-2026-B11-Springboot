@@ -126,8 +126,7 @@ class PlayerControllerTest {
 				).andExpect(status().isOk())
 		.andExpect(content().string("Player Deleted"));
 		
-		verify(playerService).deletePlayerByPlayerId(playerId);
-		
+		verify(playerService).deletePlayerByPlayerId(playerId);	
 	}
 
 }
